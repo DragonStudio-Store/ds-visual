@@ -1,6 +1,5 @@
 [versions]
-spotless = "6.25.0"
-indra = "3.0.1"
+spotless = "6.13.0"
 
 # Version declaration for initial and base platform, Spigot.
 api = "1.8.8-R0.1-SNAPSHOT"
@@ -10,4 +9,3 @@ platform = { module = "org.spigotmc:spigot-api", version.ref = "api" }
 
 [plugins]
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
-indra = { id = "net.kyori.indra", version.ref = "indra" }
