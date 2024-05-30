@@ -19,10 +19,10 @@ public interface VersionAdapterModel {
    * Sends a packet to the player for the titles send.
    *
    * @param player the player to who send the packet.
-   * @param title the text for the title, can be empty
-   *              for no title send.
-   * @param subtitle the text for the subtitle, can be
-   *                 empty for no subtitle send.
+   * @param title the text for the title, could be null
+                  for no title send.
+   * @param subtitle the text for the subtitle, could be
+                  null for no subtitle send.
    * @param fadeIn Amount of time for fully title appear.
    * @param stay Total time for title stay on screen.
    * @param fadeOut Amount of time for fully title disappear.
@@ -45,9 +45,9 @@ public interface VersionAdapterModel {
    * modification.
    *
    * @param player the player to who send the packet.
-   * @param header the text for the header, can be empty
+   * @param header the text for the header, could be null
    *               for no header modification.
-   * @param footer the text for the footer, can be empty
+   * @param footer the text for the footer, could be null
    *               for no footer modification.
    * @since 1.0.0
    */
