@@ -5,8 +5,8 @@ import java.util.logging.Logger;
 import org.bukkit.Bukkit;
 
 /**
- * Once this class is on class-loading process, check if the version
- * running on the current server is supported by the library.
+ * This class is used to perform a version-check during adapter
+ * loading process to indicate if server-version is supported or not.
  *
  * @since 1.0.0
  */
