@@ -16,14 +16,46 @@
  */
 package site.dragonstudio.visual;
 
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import site.dragonstudio.visual.version.adapter.v1_8_R3.AdapterImplModule;
+import site.dragonstudio.visual.adapter.ServerVersionAdapterLoader;
+import site.dragonstudio.visual.version.VersionAdapterModel;
 
 public final class TestPlugin extends JavaPlugin {
-  private AdapterImplModule adapterModule;
+  private VersionAdapterModel versionAdapter;
 
   @Override
   public void onLoad() {
+    this.versionAdapter = ServerVersionAdapterLoader.decide();
+  }
 
+  @Override
+  public void onEnable() {
+    if (this.versionAdapter == null) {
+      throw new IllegalStateException();
+    }
+    super.getCommand("visual").setExecutor((sender, command, label, args) -> {
+      if (!(sender instanceof Player)) {
+        return false;
+      }
+      final Player player = (Player) sender;
+      if (args.length == 0) {
+        return false;
+      }
+      switch (args[0]) {
+        case "title":
+          this.versionAdapter.sendPacketForTitle(player, "Title", "Subtitle", 20, 60, 20);
+          break;
+        case "actionbar":
+          this.versionAdapter.sendPacketForActionBar(player, "DS-Visual ActionBar Example");
+          break;
+        case "tablist":
+          this.versionAdapter.sendPacketForHeaderAndFooter(player, "Header", "Footer");
+          break;
+        default:
+          player.sendMessage("Invalid Given Argument");
+      }
+      return false;
+    });
   }
 }
