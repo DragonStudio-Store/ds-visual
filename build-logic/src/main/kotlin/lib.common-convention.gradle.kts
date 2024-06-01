@@ -3,7 +3,7 @@ plugins {
 }
 
 java {
-  toolchain.languageVersion.set(JavaLanguageVersion.of(8))
+    toolchain.languageVersion.set(JavaLanguageVersion.of(8))
 }
 
 repositories {
@@ -15,7 +15,7 @@ repositories {
 
 
 dependencies {
-  implementation("org.jetbrains:annotations:24.0.1")
+    implementation("org.jetbrains:annotations:24.0.1")
 }
 
 tasks {
