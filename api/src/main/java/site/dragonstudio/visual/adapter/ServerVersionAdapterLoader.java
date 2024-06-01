@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2024 DragonStudios - DS-Visual
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
 package site.dragonstudio.visual.adapter;
 
 import org.bukkit.Bukkit;
@@ -24,6 +40,7 @@ public final class ServerVersionAdapterLoader {
    *
    * @return The {@link VersionAdapterModel} impl, or {@code null} if
    * the minecraft version is not supported, or due to an internal error.
+   * @see ServerVersionChecker#verify()
    * @since 1.0.0
    */
   public static @Nullable VersionAdapterModel decide() {
@@ -44,8 +61,8 @@ public final class ServerVersionAdapterLoader {
       return (VersionAdapterModel) serverVersionAdapterClass.getConstructor().newInstance();
     } catch (final Exception exception) {
       exception.printStackTrace();
-      // An exception should not happen during this process, unless you has forgotten
-      // to include the version-adapter impl for a single or many versions.
+      // An exception never should not happen during this process, unless you has
+      // forgotten to include the adapter implementation for a single or many versions.
       return null;
     }
   }
