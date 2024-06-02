@@ -1,0 +1,9 @@
+name: DSVisualTest
+main: site.dragonstudio.visual.TestPlugin
+authors: [ Qekly ]
+
+version: 1.0.0
+
+commands:
+  visual:
+    aliases: [ test ]
