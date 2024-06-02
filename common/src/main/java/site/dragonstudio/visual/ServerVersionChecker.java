@@ -32,24 +32,32 @@ public final class ServerVersionChecker {
    * process due to invalid server version detected.
    */
   private static final Logger LOGGER = Logger.getLogger("ServerVersionChecker");
+  /**
+   * Corresponds to the package that store the code for the Minecraft
+   * version. e.g. org.bukkit.craftbukkit.v1_8_R3
+   */
+  public static final String MINECRAFT_VERSION_PACKAGE;
+
+  static {
+    final String releasePackageName = Bukkit.getServer().getClass().getPackage().getName();
+    // org.bukkit.craftbukkit.v1_8_R3 -> v1_8_R3
+    MINECRAFT_VERSION_PACKAGE = releasePackageName.substring(releasePackageName.lastIndexOf('.') + 1);
+  }
 
   /**
    * Verifies if the current on-running server version is supported
    * by the library.
    *
    * @return Whether the running version is supported.
+   * @see #MINECRAFT_VERSION_PACKAGE
    * @since 1.0.0
    */
   public static boolean verify() {
-    // e.g. org.bukkit.craftbukkit.v1_8_R3
-    final String packageName = Bukkit.getServer().getClass().getPackage().getName();
-    // e.g. org.bukkit.craftbukkit.v1_8_R3 -> 'v1_8_R3'
-    final String minecraftRelease = packageName.substring(packageName.lastIndexOf('.') + 1);
     try {
       // We try to get a enum-value from the [SupportVersionEnum] class to
       // validate the version, if the operation thrown an exception, indicate
       // that the current server-version isn't supported.
-      SupportVersionEnum.valueOf(minecraftRelease.toUpperCase(Locale.ROOT));
+      SupportVersionEnum.valueOf(MINECRAFT_VERSION_PACKAGE.toUpperCase(Locale.ROOT));
       return true;
     } catch (final IllegalArgumentException exception) {
       LOGGER.severe("Your server has a non-supported minecraft version by the DS-Visual library!");
