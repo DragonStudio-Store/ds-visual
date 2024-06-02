@@ -41,7 +41,6 @@ public final class AdapterImplModule implements VersionAdapterModel {
   private PacketPlayOutTitle clientsideTitlePacket;
   private PacketPlayOutChat clientsideActionBarPacket;
   private PacketPlayOutPlayerListHeaderFooter clientsideHeaderAndFooterPacket;
-  private PacketDataSerializer packetDataWriter;
 
   @Override
   public void sendPacketForTitle(final @NotNull Player player, final @Nullable String title,
@@ -82,17 +81,17 @@ public final class AdapterImplModule implements VersionAdapterModel {
     // send the packet, if any text is null which indicates non-modification,
     // we give an empty stream, instead we pass the header merged with [PACKET_JSON_TEXT]
     // content.
-    this.packetDataWriter = new PacketDataSerializer(Unpooled.buffer());
+    final PacketDataSerializer packetDataWriter = new PacketDataSerializer(Unpooled.buffer());
     try {
-      this.packetDataWriter.a((header != null)
+      packetDataWriter.a((header != null)
           ? IChatBaseComponent.ChatSerializer.a(String.format(PACKET_JSON_TEXT, header))
           : IChatBaseComponent.ChatSerializer.a(""));
-      this.packetDataWriter.a((footer != null)
+      packetDataWriter.a((footer != null)
           ? IChatBaseComponent.ChatSerializer.a(String.format(PACKET_JSON_TEXT, footer))
           : IChatBaseComponent.ChatSerializer.a(""));
       // We give to the packet the [PacketDataSerializer] instance that
       // we used to define packet data.
-      this.clientsideHeaderAndFooterPacket.a(this.packetDataWriter);
+      this.clientsideHeaderAndFooterPacket.a(packetDataWriter);
     } catch (final IOException exception) {
       exception.printStackTrace();
     }
