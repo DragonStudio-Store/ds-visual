@@ -1,6 +1,7 @@
 plugins {
     java
     alias(libs.plugins.spotless)
+	alias(libs.plugins.shadow)
 }
 
 subprojects {
@@ -24,5 +25,10 @@ subprojects {
 tasks {
     compileJava {
         dependsOn(spotlessApply)
+    }
+    shadowJar {
+        archiveFileName.set("${rootProject.name}")
+		
+		relocate("org.jetbrains.annotations", "site.dragonstudio.visual.libs.org.jetbrains.annotations")
     }
 }
