@@ -16,10 +16,13 @@
  */
 package site.dragonstudio.visual.adapter;
 
-import org.bukkit.Bukkit;
+import org.jetbrains.annotations.ApiStatus;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import site.dragonstudio.visual.ServerVersionChecker;
 import site.dragonstudio.visual.version.VersionAdapterModel;
+
+import static site.dragonstudio.visual.ServerVersionChecker.MINECRAFT_VERSION_PACKAGE;
 
 /**
  * This class is used to perform automatic version-adapters
@@ -41,6 +44,7 @@ public final class ServerVersionAdapterLoader {
    * @return The {@link VersionAdapterModel} impl, or {@code null} if
    * the minecraft version is not supported, or due to an internal error.
    * @see ServerVersionChecker#verify()
+   * @see ServerVersionChecker#MINECRAFT_VERSION_PACKAGE
    * @since 1.0.0
    */
   public static @Nullable VersionAdapterModel decide() {
@@ -49,13 +53,11 @@ public final class ServerVersionAdapterLoader {
     if (!ServerVersionChecker.verify()) {
       return null;
     }
-    final String serverVersionPackage = Bukkit.getServer().getClass().getPackage().getName();
-    final String serverMinecraftRelease = serverVersionPackage.substring(serverVersionPackage.lastIndexOf('.') + 1);
     try {
       // We search by the adapter class, and we replace the '%s' placeholder, with
       // the current server minecraft release.
       final Class<?> serverVersionAdapterClass = Class.forName(String.format(
-          VERSION_ADAPTERS_PACKAGE, serverMinecraftRelease));
+          VERSION_ADAPTERS_PACKAGE, MINECRAFT_VERSION_PACKAGE));
       // We get the constructor for the adapter class, and create a new instance
       // to be returned.
       return (VersionAdapterModel) serverVersionAdapterClass.getConstructor().newInstance();
@@ -63,6 +65,35 @@ public final class ServerVersionAdapterLoader {
       exception.printStackTrace();
       // An exception never should not happen during this process, unless you has
       // forgotten to include the adapter implementation for a single or many versions.
+      return null;
+    }
+  }
+
+  /**
+   * Returns a custom version adapter impl for the current on-running
+   * minecraft version, using the given directory for initialization.
+   *
+   * @param directory the custom adapter package.
+   * @return The {@link VersionAdapterModel} impl, or {@code null} if
+   * an exception was triggered.
+   * @see ServerVersionChecker#MINECRAFT_VERSION_PACKAGE
+   * @since 1.0.0
+   */
+  @ApiStatus.Experimental
+  public static @Nullable VersionAdapterModel custom(final @NotNull String directory) {
+    try {
+      // We search by the custom adapter class, the given directory must have
+      // the '%s' which will be replaced with the current server version.
+      //
+      // e.g. io.github.aivruu.plugin.adapter.v1_20_R3.CustomAdapterImpl
+      //
+      // [MINECRAFT_VERSION_PACKAGE] would correspond to the current version release, v1_20_R3.
+      final Class<?> serverVersionAdapterClass = Class.forName(String.format(directory, MINECRAFT_VERSION_PACKAGE));
+      // We get the constructor for the adapter class, and create a new instance
+      // to be returned.
+      return (VersionAdapterModel) serverVersionAdapterClass.getConstructor().newInstance();
+    } catch (final Exception exception) {
+      exception.printStackTrace();
       return null;
     }
   }
