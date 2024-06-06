@@ -1,7 +1,7 @@
 # ds-visual
 [![](https://jitpack.io/v/DragonStudio-Store/ds-visual.svg)](https://jitpack.io/#DragonStudio-Store/ds-visual)
 
-`ds-visual is a library designed for NMS-Packets usage for the creation of Titles, Action-bars, Boss-Bars creation, and realize modifications into player's tab-list, all for Bukkit platforms.
+`DSVisual` is a library designed for NMS-Packets usage for the creation of Titles, Action-bars, Boss-Bars creation, and realize modifications into player's tab-list, all for Bukkit platforms.
 
 > [!NOTE]\
 > At current date **06/06/2024**, version-adapters for Minecraft 1.16.5+ are not available due
