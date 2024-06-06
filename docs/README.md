@@ -7,8 +7,10 @@
 > At current date **06/06/2024**, version-adapters for Minecraft 1.16.5+ are not available due
 > to problems to include and make usage of NMS-code for this modern versions.
 
-### Documentation
-- [Javadoc](https://jitpack.io/com/github/DragonStudio-Store/ds-visual/latest/javadoc/)
+### Guides
+* [Installation](https://github.com/DragonStudio-Store/ds-visual/blob/main/docs/install-guide.md)
+* [Version Adapter Loader Usage](https://github.com/DragonStudio-Store/ds-visual/blob/main/docs/adapter-loader-usage-guide.md)
+* [Version Adapter Usage](https://github.com/DragonStudio-Store/ds-visual/blob/main/docs/adapter-usage-guide.md)
 
 ### Features
 * Send Titles and ActionBars.
@@ -17,17 +19,20 @@
 * Easiest for use.
 * Direct NMS usage, without using external libraries with wrappers for packets handling.
 
-### Guides
-* [Installation](https://github.com/DragonStudio-Store/ds-visual/blob/main/docs/install-guide.md)
-* [Basic-Usage (Version Adapter Model and Loader)](https://github.com/DragonStudio-Store/ds-visual/blob/main/docs/basic-usage-guide.md)
-* [Advanced-Usage (Custom Version Adapters)](https://github.com/DragonStudio-Store/ds-visual/blob/main/docs/advanced-usage-guide.md)
+### Documentation
+- [Javadoc](https://jitpack.io/com/github/DragonStudio-Store/ds-visual/latest/javadoc/)
 
 ### Requirements
-- Java 8 or newer.
+- Use Minecraft 1.8.8 as minimum.
+- Java 8 or above installed.
 
 ### Building
 This library use Gradle with the Kotlin-DSL for project management
-and building.
+and building. Requirements to do this:
+
+* Gradle with Kotlin-DSL.
+* Java 8 or above.
+* Git.
 ```
 git clone https://github.com/DragonStudio-Store/ds-visual.git
 cd release-downloader
