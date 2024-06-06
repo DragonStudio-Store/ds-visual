@@ -96,4 +96,4 @@ for more understanding behind method function.
   }
 ```
 Check how to make usage of version-adapter 
-[here](https://github.com/DragonStudio-Store/ds-visual/blob/main/docs/adapter-loader-usage-guide.md)
+[here](https://github.com/DragonStudio-Store/ds-visual/blob/main/docs/adapter-usage-guide.md)
