@@ -13,7 +13,7 @@ However, let's go to check description and functionality of methods available on
 This method execution will check the current on-running version that is using the server, and will use it
 to determinate the necessary version-adapter for compatibility with that version.
 
-First that all, the method invokes a the `ServerVersionChecker#verify`, which uses an enum that stores the
+First that all, the method invokes the `ServerVersionChecker#verify`, which uses an enum that stores the
 pre-defined supported minecraft versions for this library, for determinate if there's an available adapter for the 
 current server version, if it is, the method will search the class that inherites from the version adapter model,
 and will initialize it and return their instance to be used. In case that the correspond-to-version adapter won't be
