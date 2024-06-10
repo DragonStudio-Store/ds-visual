@@ -25,9 +25,11 @@ import org.jetbrains.annotations.Nullable;
  * used to implement code adaptations for the supported
  * Minecraft versions.
  *
+ * @param <T> The object type that will use the adapter,
+ *            can be a simple string, or a modern component.
  * @since 1.0.0
  */
-public interface VersionAdapterModel {
+public interface VersionAdapterModel<T> {
   /** The JSON text used for input content given for send packets. */
   String PACKET_JSON_TEXT = "{\"text\": \"%s\"}";
 
@@ -36,15 +38,15 @@ public interface VersionAdapterModel {
    *
    * @param player the player to who send the packet.
    * @param title the text for the title, could be null
-                  for no title send.
+   *              for no title send.
    * @param subtitle the text for the subtitle, could be
-                  null for no subtitle send.
+   *                 null for no subtitle send.
    * @param fadeIn Amount of time for fully title appear.
    * @param stay Total time for title stay on screen.
    * @param fadeOut Amount of time for fully title disappear.
    * @since 1.0.0
    */
-  void sendPacketForTitle(final @NotNull Player player, final @Nullable String title, final @Nullable String subtitle,
+  void sendPacketForTitle(final @NotNull Player player, final @Nullable T title, final @Nullable T subtitle,
                           final int fadeIn, final int stay, final int fadeOut);
 
   /**
@@ -54,7 +56,7 @@ public interface VersionAdapterModel {
    * @param text the text for the subtitle.
    * @since 1.0.0
    */
-  void sendPacketForActionBar(final @NotNull Player player, final @NotNull String text);
+  void sendPacketForActionBar(final @NotNull Player player, final @NotNull T text);
 
   /**
    * Sends a packet to the player for the header and footer
@@ -67,6 +69,6 @@ public interface VersionAdapterModel {
    *               for no footer modification.
    * @since 1.0.0
    */
-  void sendPacketForHeaderAndFooter(final @NotNull Player player, final @Nullable String header,
-                                    final @Nullable String footer);
+  void sendPacketForHeaderAndFooter(final @NotNull Player player, final @Nullable T header,
+                                    final @Nullable T footer);
 }
