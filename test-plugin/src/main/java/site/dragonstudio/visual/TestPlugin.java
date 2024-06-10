@@ -22,16 +22,17 @@ import site.dragonstudio.visual.adapter.ServerVersionAdapterLoader;
 import site.dragonstudio.visual.version.VersionAdapterModel;
 
 public final class TestPlugin extends JavaPlugin {
-  private VersionAdapterModel versionAdapter;
+  private VersionAdapterModel<String> legacyVersionAdapter;
 
   @Override
   public void onLoad() {
-    this.versionAdapter = ServerVersionAdapterLoader.decide();
+    // Minecraft 1.8.8 adapter uses strings for the packets content.
+    this.legacyVersionAdapter = (VersionAdapterModel<String>) ServerVersionAdapterLoader.of(SupportVersionEnum.V1_8_R3);
   }
 
   @Override
   public void onEnable() {
-    if (this.versionAdapter == null) {
+    if (this.legacyVersionAdapter == null) {
       throw new IllegalStateException();
     }
     super.getCommand("visual").setExecutor((sender, command, label, args) -> {
@@ -44,13 +45,13 @@ public final class TestPlugin extends JavaPlugin {
       }
       switch (args[0]) {
         case "title":
-          this.versionAdapter.sendPacketForTitle(player, "Title", "Subtitle", 20, 60, 20);
+          this.legacyVersionAdapter.sendPacketForTitle(player, "Title", "Subtitle", 20, 60, 20);
           break;
         case "actionbar":
-          this.versionAdapter.sendPacketForActionBar(player, "DS-Visual ActionBar Example");
+          this.legacyVersionAdapter.sendPacketForActionBar(player, "DS-Visual ActionBar Example");
           break;
         case "tablist":
-          this.versionAdapter.sendPacketForHeaderAndFooter(player, "Header", "Footer");
+          this.legacyVersionAdapter.sendPacketForHeaderAndFooter(player, "Header", "Footer");
           break;
         default:
           player.sendMessage("Invalid Given Argument");
