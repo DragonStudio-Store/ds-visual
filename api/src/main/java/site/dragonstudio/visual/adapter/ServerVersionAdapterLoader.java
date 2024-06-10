@@ -16,10 +16,10 @@
  */
 package site.dragonstudio.visual.adapter;
 
-import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import site.dragonstudio.visual.ServerVersionChecker;
+import site.dragonstudio.visual.SupportVersionEnum;
 import site.dragonstudio.visual.version.VersionAdapterModel;
 
 import static site.dragonstudio.visual.ServerVersionChecker.MINECRAFT_VERSION_PACKAGE;
@@ -47,7 +47,7 @@ public final class ServerVersionAdapterLoader {
    * @see ServerVersionChecker#MINECRAFT_VERSION_PACKAGE
    * @since 1.0.0
    */
-  public static @Nullable VersionAdapterModel decide() {
+  public static @Nullable VersionAdapterModel<?> decide() {
     // If checker has not detected compatible versions running on the
     // server, will return null.
     if (!ServerVersionChecker.verify()) {
@@ -60,7 +60,7 @@ public final class ServerVersionAdapterLoader {
           VERSION_ADAPTERS_PACKAGE, MINECRAFT_VERSION_PACKAGE));
       // We get the constructor for the adapter class, and create a new instance
       // to be returned.
-      return (VersionAdapterModel) serverVersionAdapterClass.getConstructor().newInstance();
+      return (VersionAdapterModel<?>) serverVersionAdapterClass.getConstructor().newInstance();
     } catch (final Exception exception) {
       exception.printStackTrace();
       // An exception never should not happen during this process, unless you has
@@ -70,30 +70,30 @@ public final class ServerVersionAdapterLoader {
   }
 
   /**
-   * Returns a custom version adapter impl for the current on-running
-   * minecraft version, using the given directory for initialization.
-   *
-   * @param directory the custom adapter package.
-   * @return The {@link VersionAdapterModel} impl, or {@code null} if
-   * an exception was triggered.
-   * @see ServerVersionChecker#MINECRAFT_VERSION_PACKAGE
+   * Returns the version adapter implementation for the specified minecraft
+   * version release.
+   * 
+   * @param supportedVersionEnumValue the minecraft release enum (e.g. {@link SupportVersionEnum#V1_20_R3}).
+   * @return The version adapter type for the specified minecraft version. This
+   * means that for versions lower to 1.16.5 you'll receive an adapter for with-string
+   * usage, meanwhile for 1.16.5 the adapter will use modern components.
    * @since 1.0.0
    */
-  @ApiStatus.Experimental
-  public static @Nullable VersionAdapterModel custom(final @NotNull String directory) {
+  public static @Nullable VersionAdapterModel<?> of(final @NotNull SupportVersionEnum supportedVersionEnumValue) {
     try {
-      // We search by the custom adapter class, the given directory must have
-      // the '%s' which will be replaced with the current server version.
-      //
-      // e.g. io.github.aivruu.plugin.adapter.v1_20_R3.CustomAdapterImpl
-      //
-      // [MINECRAFT_VERSION_PACKAGE] would correspond to the current version release, v1_20_R3.
-      final Class<?> serverVersionAdapterClass = Class.forName(String.format(directory, MINECRAFT_VERSION_PACKAGE));
+      final String supportedVersionValue = supportedVersionEnumValue.name();
+      // We search by the adapter class, and we replace the '%s' placeholder, with
+      // the to-string converted enum value replacing the upper case 'V' character,
+      // into a lower case.
+      final Class<?> serverVersionAdapterClass = Class.forName(String.format(
+          VERSION_ADAPTERS_PACKAGE, supportedVersionValue.replace("V", "v")));
       // We get the constructor for the adapter class, and create a new instance
       // to be returned.
-      return (VersionAdapterModel) serverVersionAdapterClass.getConstructor().newInstance();
+      return (VersionAdapterModel<?>) serverVersionAdapterClass.getConstructor().newInstance();
     } catch (final Exception exception) {
       exception.printStackTrace();
+      // This method should never throw an exception, because the given version value
+      // will always the same.
       return null;
     }
   }
