@@ -37,7 +37,7 @@ import site.dragonstudio.visual.version.VersionAdapterModel;
  *
  * @since 1.0.0
  */
-public final class AdapterImplModule implements VersionAdapterModel {
+public final class AdapterImplModule implements VersionAdapterModel<String> {
   private PlayerConnection connection;
   private PacketPlayOutTitle clientsideTitlePacket;
   private PacketPlayOutChat clientsideActionBarPacket;
@@ -48,6 +48,7 @@ public final class AdapterImplModule implements VersionAdapterModel {
                                  final @Nullable String subtitle, final int fadeIn, final int stay, final int fadeOut) {
     this.connection = ((CraftPlayer) player).getHandle().playerConnection;
     this.clientsideTitlePacket = new PacketPlayOutTitle(fadeIn, stay, fadeOut);
+    this.connection.sendPacket(this.clientsideTitlePacket);
     // Check if the title was defined to be sent.
     if (title != null) {
       this.clientsideTitlePacket = new PacketPlayOutTitle(
