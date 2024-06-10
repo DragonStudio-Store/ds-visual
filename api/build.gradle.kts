@@ -1,9 +1,22 @@
 plugins {
-    id("lib.publishing-convention")
+    alias(libs.plugins.shadow)
+}
+
+tasks {
+    shadowJar {
+        archiveBaseName.set(rootProject.name)
+        archiveClassifier.set("API")
+        minimize()
+
+        relocate("org.jetbrains.annotations", "site.dragonstudio.visual.libs.org.jetbrains.annotations")
+    }
+    build {
+        dependsOn(shadowJar)
+    }
 }
 
 dependencies {
-    implementation(project(":ds-visual-common"))
+    api(project(":ds-visual-common"))
 
     compileOnly(libs.platform)
 }
