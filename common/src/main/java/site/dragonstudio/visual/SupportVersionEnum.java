@@ -40,21 +40,17 @@ public enum SupportVersionEnum {
   /** Minecraft 1.15.2 */
   V1_15_R1,
   /** Minecraft 1.16.5 */
-  V1_16_R3
-  /*
-   * Future Minecraft versions to have default support by
-   * the library soon.
-   */
-  // Minecraft 1.17.1
-  // V1_17_R1
-  // Minecraft 1.18.2
-  // V1_18_R2
-  // Minecraft 1.19.4
-  // V1_19_R3
-  // Minecraft 1.20.1
-  // V1_20_R1
-  // Minecraft 1.20.3
-  // V1_20_R2
-  // Minecraft 1.20.6
-  // V1_20_R3
+  V1_16_R3,
+  /** Minecraft 1.17.1 */
+  V1_17_R1,
+  /** Minecraft 1.18.2 */
+  V1_18_R2,
+  /** Minecraft 1.19.4 */
+  V1_19_R3,
+  /** Minecraft 1.20.1 */
+  V1_20_R1,
+  /** Minecraft 1.20.3 */
+  V1_20_R2,
+  /** Minecraft 1.20.6 */
+  V1_20_R3
 }
