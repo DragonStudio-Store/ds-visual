@@ -1,5 +1,5 @@
 [versions]
-shadow = "8.1.1"
+shadow = "8.1.7"
 spotless = "6.13.0"
 indra = "3.0.1"
 paperweight = "1.7.1"
@@ -11,7 +11,7 @@ api = "1.8.8-R0.1-SNAPSHOT"
 platform = { module = "org.spigotmc:spigot-api", version.ref = "api" }
 
 [plugins]
-shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadow" }
+shadow = { id = "io.github.goooler.shadow", version.ref = "shadow" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 indra = { id = "net.kyori.indra", version.ref = "indra" }
 paperweight = { id = "io.papermc.paperweight.userdev", version.ref = "paperweight" }
