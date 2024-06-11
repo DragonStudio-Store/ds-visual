@@ -16,7 +16,7 @@ dependencies {
   implementation("com.github.DragonStudio-Store:ds-visual-api:VERSION") // Only includes the version adapter model, and the adapter loader.
   // Includes the version adapter for that minecraft release, you can see the default available adapters here.
   // -> https://github.com/DragonStudio-Store/ds-visual/tree/main/version
-  implementation("com.github.DragonStudio-Store:ds-visual-1_8_R3:VERSION")
+  implementation("com.github.DragonStudio-Store:ds-visual-v1_8_R3:VERSION")
 }
 
 shadowJar {
