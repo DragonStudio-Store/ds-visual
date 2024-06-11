@@ -2,11 +2,12 @@
 This is the interface that the library uses as bridge for all the pre-defined
 version adapters, and also, for the custom version adapters.
 
-It counts with methods to send titles, action-bars and boss-bars, or even make modifications
-to the player tab-list, including changes for the header and footer.
+Any interface or inheritor instance requires a generic type for processing, this is used to
+adapt the interface for usage with legacy strings, and modern components used with modern Paper
+versions for more customizable formats. The interface counts with methods to send titles, action-bars and boss-bars, and make modifications to player's tab-list, including changes for the header and footer.
 
 A very basic example using the adapter methods, check it out [here](https://github.com/DragonStudio-Store/ds-visual/blob/main/test-plugin/src/main/java/site/dragonstudio/visual/TestPlugin.java).
-Let's go to check description and functionality of methods available on the [ServerVersionAdapterLoader](https://github.com/DragonStudio-Store/ds-visual/blob/main/api/src/main/java/site/dragonstudio/visual/adapter/ServerVersionAdapterLoader.java).
+Let's go to check description and functionality of methods available on the [VersionAdapterModel](https://github.com/DragonStudio-Store/ds-visual/blob/main/api/src/main/java/site/dragonstudio/visual/version/VersionAdapterModel.java).
 
 ### VersionAdapterModel#sendPacketForTitle
 This method execution will send packets with the titles information to the
@@ -26,7 +27,7 @@ player's client.
  * @param fadeOut Amount of time for fully title disappear.
  * @since 1.0.0
  */
-void sendPacketForTitle(final @NotNull Player player, final @Nullable String title, final @Nullable String subtitle,
+void sendPacketForTitle(final @NotNull Player player, final @Nullable T title, final @Nullable T subtitle,
                         final int fadeIn, final int stay, final int fadeOut);
 ```
 
@@ -42,7 +43,7 @@ player's client.
  * @param text the text for the subtitle.
  * @since 1.0.0
  */
-void sendPacketForActionBar(final @NotNull Player player, final @NotNull String text);
+void sendPacketForActionBar(final @NotNull Player player, final @NotNull T text);
 ```
 
 ### VersionAdapterModel#sendPacketForHeaderAndFooter
@@ -61,8 +62,8 @@ for the tab-list, to the player's client.
  *               for no footer modification.
  * @since 1.0.0
  */
-void sendPacketForHeaderAndFooter(final @NotNull Player player, final @Nullable String header,
-                                  final @Nullable String footer);
+void sendPacketForHeaderAndFooter(final @NotNull Player player, final @Nullable T header,
+                                  final @Nullable T footer);
 ```
 
 ### VersionAdapterModel#sendPacketForBossBar
