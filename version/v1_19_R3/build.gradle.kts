@@ -11,7 +11,7 @@ java {
 
 tasks {
     shadowJar {
-        archiveFileName.set(rootProject.name)
+        archiveBaseName.set(rootProject.name)
         archiveClassifier.set("Adapter-$versionAdapterTarget")
         minimize()
 

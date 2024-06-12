@@ -6,11 +6,11 @@ plugins {
 
 tasks {
     shadowJar {
-        archiveFileName.set(rootProject.name)
+        archiveBaseName.set(rootProject.name)
         archiveClassifier.set("Adapter-$versionAdapterTarget")
-    minimize()
+        minimize()
 
-    relocate("org.jetbrains.annotations", "site.dragonstudio.visual.libs.org.jetbrains.annotations")
+        relocate("org.jetbrains.annotations", "site.dragonstudio.visual.libs.org.jetbrains.annotations")
     }
     build {
         dependsOn(shadowJar)
