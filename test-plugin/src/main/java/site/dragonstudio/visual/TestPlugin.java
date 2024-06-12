@@ -32,6 +32,10 @@ public final class TestPlugin extends JavaPlugin {
 
   @Override
   public void onEnable() {
+    // We're using a default adapter for an specific version (1.8.8), and we know that server
+    // is running that version, so this check is unnecessary. But, if we don't know the exact
+    // version that the server will use (multiple versions support and adapters usage), then we
+    // need to check if the version-adapter was initialized correctly during plugin loading process.
     if (this.legacyVersionAdapter == null) {
       throw new IllegalStateException();
     }
