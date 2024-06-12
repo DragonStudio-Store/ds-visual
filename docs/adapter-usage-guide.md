@@ -66,7 +66,7 @@ void sendPacketForHeaderAndFooter(final @NotNull Player player, final @Nullable 
                                   final @Nullable T footer);
 ```
 
-### VersionAdapterModel#sendPacketForBossBar
+### VersionAdapterModel#sendPacketForBossBar (Not implemented yet)
 ...
 
 ```java
