@@ -27,7 +27,7 @@ public final class TestPlugin extends JavaPlugin {
   @Override
   public void onLoad() {
     // Minecraft 1.8.8 adapter uses strings for the packets content.
-    this.legacyVersionAdapter = (VersionAdapterModel<String>) ServerVersionAdapterLoader.of(SupportVersionEnum.V1_8_R3);
+    this.legacyVersionAdapter = (VersionAdapterModel<String>) ServerVersionAdapterLoader.of(SupportedVersionsEnum.V1_8_R3);
   }
 
   @Override
