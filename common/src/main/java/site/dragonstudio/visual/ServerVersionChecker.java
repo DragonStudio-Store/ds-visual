@@ -54,10 +54,10 @@ public final class ServerVersionChecker {
    */
   public static boolean verify() {
     try {
-      // We try to get a enum-value from the [SupportVersionEnum] class to
+      // We try to get a enum-value from the [SupportedVersionsEnum] class to
       // validate the version, if the operation thrown an exception, indicate
       // that the current server-version isn't supported.
-      SupportVersionEnum.valueOf(MINECRAFT_VERSION_PACKAGE.toUpperCase(Locale.ROOT));
+      SupportedVersionsEnum.valueOf(MINECRAFT_VERSION_PACKAGE.toUpperCase(Locale.ROOT));
       return true;
     } catch (final IllegalArgumentException exception) {
       LOGGER.severe("Your server has a non-supported minecraft version by the DS-Visual library!");
