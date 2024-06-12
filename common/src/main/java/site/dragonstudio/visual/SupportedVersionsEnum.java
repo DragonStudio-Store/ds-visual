@@ -22,7 +22,7 @@ package site.dragonstudio.visual;
  *
  * @since 1.0.0
  */
-public enum SupportVersionEnum {
+public enum SupportedVersionsEnum {
   /** Minecraft 1.8.8 */
   V1_8_R3,
   /** Minecraft 1.9.4 */
