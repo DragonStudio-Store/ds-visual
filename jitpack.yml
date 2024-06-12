@@ -1,4 +1,6 @@
 jdk: 
 - openjdk8
+- openjdk17
+- openjdk21
 install: 
 - "bash gradlew build javadoc publishToMavenLocal"
