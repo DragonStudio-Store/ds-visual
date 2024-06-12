@@ -19,7 +19,7 @@ package site.dragonstudio.visual.adapter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import site.dragonstudio.visual.ServerVersionChecker;
-import site.dragonstudio.visual.SupportVersionEnum;
+import site.dragonstudio.visual.SupportedVersionsEnum;
 import site.dragonstudio.visual.version.VersionAdapterModel;
 
 import static site.dragonstudio.visual.ServerVersionChecker.MINECRAFT_VERSION_PACKAGE;
@@ -79,7 +79,7 @@ public final class ServerVersionAdapterLoader {
    * usage, meanwhile for 1.16.5 the adapter will use modern components.
    * @since 1.0.0
    */
-  public static @Nullable VersionAdapterModel<?> of(final @NotNull SupportVersionEnum supportedVersionEnumValue) {
+  public static @Nullable VersionAdapterModel<?> of(final @NotNull SupportedVersionsEnum supportedVersionEnumValue) {
     try {
       final String supportedVersionValue = supportedVersionEnumValue.name();
       // We search by the adapter class, and we replace the '%s' placeholder, with
