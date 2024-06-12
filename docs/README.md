@@ -1,15 +1,17 @@
 # ds-visual
 [![](https://jitpack.io/v/DragonStudio-Store/ds-visual.svg)](https://jitpack.io/#DragonStudio-Store/ds-visual)
 
-`DSVisual` is a library designed for NMS-Packets usage for the creation of Titles, Action-bars or Boss-Bars, and realize modifications into player's tab-list, all for Bukkit platforms and with support for several Minecraft versions.
+`DSVisual` is a library designed for NMS-Packets usage for the creation of Titles, Action-bars, and realize modifications into player's tab-list, all for Bukkit platforms and with support for several Minecraft versions.
 
 ## Features
 - Send Titles and ActionBars.
-- Create custom BossBar's.
 - Modify players tab-list content.
 - Easiest for use.
 - Direct [Minecraft Protocol](https://wiki.vg/Protocol) usage, without using external libraries with wrappers for packets handling.
-- [MiniMessage](https://docs.advntr.dev/minimessage/format.html) support for 1.16.5+.
+- [MiniMessage](https://docs.advntr.dev/minimessage/format.html) support for `1.17.1 - 1.20.6` versions.
+
+## Future Features
+- Custom BossBar creation.
 
 ## Guides
 * [Installation](https://github.com/DragonStudio-Store/ds-visual/blob/main/docs/install-guide.md); For library installation and classpath import.
@@ -26,7 +28,7 @@ This library use Gradle with the Kotlin-DSL for project management
 and building. Requirements to do this:
 
 1. Gradle with Kotlin-DSL.
-2. Minimum Java 8.
+2. Java 8.
 3. Git.
 ```
 git clone https://github.com/DragonStudio-Store/ds-visual.git
