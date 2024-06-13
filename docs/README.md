@@ -11,6 +11,12 @@
 ## Future Features
 - Custom BossBar creation.
 
+## Javadoc
+Below there's the javadocs for each module of the library, to view the adapters you must define the subproject name, e.g. ds-visual-v1_8_R3.
+Here you have an [example](https://javadoc.jitpack.io/com/github/DragonStudio-Store/ds-visual/ds-visual-v1_20_R3/latest/javadoc/) for adapter javadoc view.
+- [API](https://javadoc.jitpack.io/com/github/DragonStudio-Store/ds-visual/ds-visual-api/latest/javadoc/) for Latest release.
+- [Common](https://javadoc.jitpack.io/com/github/DragonStudio-Store/ds-visual/ds-visual-common/latest/javadoc/) for Latest release.
+
 ## Guides
 * [Installation](https://github.com/DragonStudio-Store/ds-visual/blob/main/docs/install-guide.md); For library installation and classpath import.
 * [Java Required Version](https://github.com/DragonStudio-Store/ds-visual/blob/main/docs/java-version-guide.md); Indicate the required Java version for every adapter.
