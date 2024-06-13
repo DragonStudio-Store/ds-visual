@@ -13,6 +13,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import site.dragonstudio.visual.version.VersionAdapterModel;
 
+/**
+ * {@link VersionAdapterModel} implementation for Minecraft 1.17.1
+ * support.
+ *
+ * @since 1.0.0
+ */
 public final class AdapterImplModule implements VersionAdapterModel<Component> {
   private ServerPlayerConnection playerConnection;
   private ClientboundSetTitleTextPacket clientsideTitleTextPacket;
