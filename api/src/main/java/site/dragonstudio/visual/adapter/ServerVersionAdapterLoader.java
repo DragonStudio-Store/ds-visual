@@ -73,7 +73,7 @@ public final class ServerVersionAdapterLoader {
    * Returns the version adapter implementation for the specified minecraft
    * version release.
    * 
-   * @param supportedVersionEnumValue the minecraft release enum (e.g. {@link SupportVersionEnum#V1_20_R3}).
+   * @param supportedVersionEnumValue the minecraft release enum (e.g. {@link SupportedVersionsEnum#V1_20_R3}).
    * @return The version adapter type for the specified minecraft version. This
    * means that for versions lower to 1.16.5 you'll receive an adapter for with-string
    * usage, meanwhile for 1.16.5 the adapter will use modern components.
