@@ -1,6 +1,4 @@
-# ds-visual
-[![](https://jitpack.io/v/DragonStudio-Store/ds-visual.svg)](https://jitpack.io/#DragonStudio-Store/ds-visual)
-
+# ds-visual [![](https://jitpack.io/v/DragonStudio-Store/ds-visual.svg)](https://jitpack.io/#DragonStudio-Store/ds-visual)
 `DSVisual` is a library designed for NMS-Packets usage for the creation of Titles, Action-bars, and realize modifications into player's tab-list, all for Bukkit platforms and with support for several Minecraft versions.
 
 ## Features
