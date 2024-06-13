@@ -13,18 +13,18 @@ subprojects {
         gradlePluginPortal()
         mavenCentral()
         mavenLocal()
-		maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
+		    maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
         maven("https://repo.papermc.io/repository/maven-public/")
         maven("https://repo.codemc.org/repository/nms/")
     }
     
     java {
-	    toolchain.languageVersion.set(JavaLanguageVersion.of(8))
-	}
+	      toolchain.languageVersion.set(JavaLanguageVersion.of(8))
+	  }
 	
-	dependencies {
-	    api("org.jetbrains:annotations:24.0.1")
-	}
+	  dependencies {
+	      api("org.jetbrains:annotations:24.0.1")
+	  }
 	
     spotless {
         java {
@@ -43,8 +43,9 @@ subprojects {
             dependsOn("spotlessApply")
             options.compilerArgs.add("-parameters")
         }
-		javadoc {
+		    javadoc {
             options.encoding = Charsets.UTF_8.name()
+			      destinationDir = file("javadoc")
         }
     }
 
