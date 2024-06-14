@@ -28,7 +28,7 @@ Do you want to contribute the project? Great! Simplely fork the project reposito
 this repository. We're agree to accept any changes that are helpful for developement, like features addition, or bugs fixing will be accepted.
 
 ## Code of Conduct
-We expect all contributors to adhere to our [Code of Conduct](docs/CODE_OF_CONDUCT.md). Please read it to understand the expected behavior in our community.
+We expect all contributors to adhere to our [Code of Conduct](../../CODE_OF_CONDUCT.md). Please read it to understand the expected behavior in our community.
 
 ## Building
 This library use Gradle with the Kotlin-DSL for project management
