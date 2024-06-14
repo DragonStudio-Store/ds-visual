@@ -27,6 +27,9 @@ Here you have an [example](https://javadoc.jitpack.io/com/github/DragonStudio-St
 Do you want to contribute the project? Great! Simplely fork the project repository, and make the changes that you require to do, then create a pull-request to
 this repository. We're agree to accept any changes that are helpful for developement, like features addition, or bugs fixing will be accepted.
 
+## Code of Conduct
+We expect all contributors to adhere to our [Code of Conduct](CODE_OF_CONDUCT.md). Please read it to understand the expected behavior in our community.
+
 ## Building
 This library use Gradle with the Kotlin-DSL for project management
 and building. Requirements to do this:
