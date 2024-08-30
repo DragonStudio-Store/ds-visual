@@ -2,7 +2,7 @@
 shadow = "8.1.7"
 spotless = "6.13.0"
 indra = "3.0.1"
-paperweight = "1.7.1"
+paperweight = "1.7.2"
 
 # Version declaration for initial and base platform, Spigot.
 api = "1.8.8-R0.1-SNAPSHOT"
