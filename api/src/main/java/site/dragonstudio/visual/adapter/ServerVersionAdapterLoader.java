@@ -1,19 +1,19 @@
-/*
- * Copyright (C) 2024 DragonStudios - DS-Visual
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <https://www.gnu.org/licenses/>.
- */
+//
+// Copyright (C) 2024 DragonStudios - repo-viewer
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <https://www.gnu.org/licenses/>.
+//
 package site.dragonstudio.visual.adapter;
 
 import org.jetbrains.annotations.NotNull;
@@ -72,7 +72,7 @@ public final class ServerVersionAdapterLoader {
   /**
    * Returns the version adapter implementation for the specified minecraft
    * version release.
-   * 
+   *
    * @param supportedVersionEnumValue the minecraft release enum (e.g. {@link SupportedVersionsEnum#V1_20_R3}).
    * @return The version adapter type for the specified minecraft version. This
    * means that for versions lower to 1.16.5 you'll receive an adapter for with-string
