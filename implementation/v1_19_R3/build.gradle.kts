@@ -1,29 +1,18 @@
 val versionAdapterTarget = "1.19.4"
 
 plugins {
-    alias(libs.plugins.shadow)
   alias(libs.plugins.paperweight)
 }
 
-java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
-}
-
-tasks {
-    shadowJar {
-        archiveBaseName.set(rootProject.name)
-        archiveClassifier.set("Adapter-$versionAdapterTarget")
-        minimize()
-
-        relocate("org.jetbrains.annotations", "site.dragonstudio.visual.libs.org.jetbrains.annotations")
-    }
-    build {
-        dependsOn(shadowJar)
-    }
+indra {
+  javaVersions {
+    target(17)
+    minimumToolchain(17)
+  }
 }
 
 dependencies {
-    api(project(":ds-visual-api"))
+  api(project(":ds-visual-api"))
 
-    paperweight.paperDevBundle("$versionAdapterTarget-R0.1-SNAPSHOT")
+  paperweight.paperDevBundle("$versionAdapterTarget-R0.1-SNAPSHOT")
 }

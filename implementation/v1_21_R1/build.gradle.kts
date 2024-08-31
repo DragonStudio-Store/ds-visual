@@ -1,4 +1,4 @@
-val versionAdapterTarget = "1.20.4"
+val versionAdapterTarget = "1.21"
 
 plugins {
   alias(libs.plugins.paperweight)
@@ -6,8 +6,8 @@ plugins {
 
 indra {
   javaVersions {
-    target(17)
-    minimumToolchain(17)
+    target(21)
+    minimumToolchain(21)
   }
 }
 
