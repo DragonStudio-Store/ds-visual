@@ -2,12 +2,16 @@ plugins {
   `java-library`
   `maven-publish`
   alias(libs.plugins.spotless)
+  alias(libs.plugins.indra)
+  alias(libs.plugins.shadow)
 }
 
 subprojects {
   apply(plugin = "java-library")
   apply(plugin = "maven-publish")
   apply(plugin = "com.diffplug.spotless")
+  apply(plugin = "net.kyori.indra")
+  apply(plugin = "io.github.goooler.shadow")
 
   repositories {
     gradlePluginPortal()
@@ -18,9 +22,12 @@ subprojects {
     maven("https://repo.codemc.org/repository/nms/")
   }
     
-  java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(8))
-	}
+  indra {
+    javaVersions {
+      target(8)
+      minimumToolchain(8)
+    }
+  }
 	
   dependencies {
     api("org.jetbrains:annotations:24.0.1")
@@ -28,7 +35,7 @@ subprojects {
 	
   spotless {
     java {
-      licenseHeaderFile("$rootDir/license/header.txt")
+      licenseHeaderFile("$rootDir/header/header.txt")
       trimTrailingWhitespace()
       indentWithSpaces(2)
     }
@@ -37,19 +44,21 @@ subprojects {
       indentWithSpaces(2)
     }
   }
-  
-  shadowJar {
-    archiveBaseName.set(project.name)
-    minimize()
-
-    relocate("org.jetbrains.annotations", "site.dragonstudio.visual.libs.org.jetbrains.annotations")
-  }
 
   tasks {
     compileJava {
       dependsOn("spotlessApply")
-      dependsOn("shadowJar")
       options.compilerArgs.add("-parameters")
+    }
+    
+    shadowJar {
+      archiveBaseName.set(project.name)
+      minimize()
+      
+      // Package expected to use as final directory for dependencies used.
+      val relocationFinalPackage = "site.dragonstudio.visual.libs"
+      
+      relocate("org.jetbrains.annotations", "$relocationFinalPackage.org.jetbrains.annotations")
     }
   }
   
